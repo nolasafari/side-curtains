@@ -1,10 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+interface AuthUser {
+  username: string;
+  display_name: string;
+  role: string;
+}
 
 export default function Navbar() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [authLoaded, setAuthLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/auth/me")
+      .then((r) => r.json())
+      .then((d) => setUser(d.user))
+      .catch(() => {})
+      .finally(() => setAuthLoaded(true));
+  }, []);
+
+  async function handleLogout() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    setUser(null);
+    router.push("/");
+    router.refresh();
+  }
 
   const links = [
     { href: "/", label: "Home" },
@@ -31,7 +56,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex space-x-1">
+          <div className="hidden md:flex items-center space-x-1">
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -41,6 +66,48 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+
+            {/* Auth section */}
+            {authLoaded && (
+              <>
+                {user ? (
+                  <>
+                    {user.role === "admin" && (
+                      <Link
+                        href="/admin"
+                        className="px-4 py-2 rounded-md text-amber-300 hover:bg-brg-light transition-colors duration-200 font-medium"
+                      >
+                        Admin
+                      </Link>
+                    )}
+                    <span className="px-3 py-2 text-cream/70 text-sm">
+                      {user.display_name}
+                    </span>
+                    <button
+                      onClick={handleLogout}
+                      className="px-4 py-2 rounded-md text-cream hover:bg-brg-light transition-colors duration-200 font-medium"
+                    >
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      className="px-4 py-2 rounded-md text-cream hover:bg-brg-light transition-colors duration-200 font-medium"
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      href="/register"
+                      className="px-4 py-1.5 rounded-md bg-cream text-brg hover:bg-cream-dark transition-colors duration-200 font-semibold text-sm"
+                    >
+                      Register
+                    </Link>
+                  </>
+                )}
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -72,6 +139,47 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            {authLoaded && (
+              <>
+                {user ? (
+                  <>
+                    {user.role === "admin" && (
+                      <Link
+                        href="/admin"
+                        className="block px-4 py-2 rounded-md text-amber-300 hover:bg-brg-light transition-colors duration-200"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Admin
+                      </Link>
+                    )}
+                    <div className="px-4 py-2 text-cream/70 text-sm">{user.display_name}</div>
+                    <button
+                      onClick={() => { handleLogout(); setIsOpen(false); }}
+                      className="block w-full text-left px-4 py-2 rounded-md text-cream hover:bg-brg-light transition-colors duration-200"
+                    >
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      className="block px-4 py-2 rounded-md text-cream hover:bg-brg-light transition-colors duration-200"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      href="/register"
+                      className="block px-4 py-2 rounded-md text-cream hover:bg-brg-light transition-colors duration-200"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Register
+                    </Link>
+                  </>
+                )}
+              </>
+            )}
           </div>
         )}
       </div>
