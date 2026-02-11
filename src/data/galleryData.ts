@@ -4,8 +4,12 @@ export interface GalleryImage {
   model: string;
   year?: string;
   description: string;
-  color: string; // placeholder color since we don't have real images yet
+  color: string;
   emoji: string;
+  imageUrl?: string;
+  imageCredit?: string;
+  imageLicense?: string;
+  commonsUrl?: string;
 }
 
 export const marques = [
@@ -27,6 +31,10 @@ export const galleryImages: GalleryImage[] = [
     description: "A beautifully restored MGA in Old English White, ready for a Sunday drive.",
     color: "#C41E3A",
     emoji: "🔴",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/07/1957_MG_MGA.jpg",
+    imageCredit: "Calreyn88",
+    imageLicense: "CC BY-SA 4.0",
+    commonsUrl: "https://commons.wikimedia.org/wiki/File:1957_MG_MGA.jpg",
   },
   {
     id: "2",
@@ -36,6 +44,10 @@ export const galleryImages: GalleryImage[] = [
     description: "Chrome bumper MGB in British Racing Green. The quintessential British sports car.",
     color: "#004225",
     emoji: "🟢",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Mgb.bristol.750pix.jpg",
+    imageCredit: "Adrian Pingstone",
+    imageLicense: "Public Domain",
+    commonsUrl: "https://commons.wikimedia.org/wiki/File:Mgb.bristol.750pix.jpg",
   },
   {
     id: "3",
@@ -45,6 +57,10 @@ export const galleryImages: GalleryImage[] = [
     description: "A charming TD in Ivory, complete with the original tool kit.",
     color: "#FFFFF0",
     emoji: "⚪",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a7/1950_MG_TD_1.3_Front.jpg",
+    imageCredit: "Vauxford",
+    imageLicense: "CC BY-SA 4.0",
+    commonsUrl: "https://commons.wikimedia.org/wiki/File:1950_MG_TD_1.3_Front.jpg",
   },
   {
     id: "4",
@@ -54,6 +70,10 @@ export const galleryImages: GalleryImage[] = [
     description: "Pimento Red TR6 — the last of the hairy-chested Triumphs.",
     color: "#C41E3A",
     emoji: "🔴",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/0a/1973_Triumph_TR6_Red.jpg",
+    imageCredit: "kitmasterbloke",
+    imageLicense: "CC BY 4.0",
+    commonsUrl: "https://commons.wikimedia.org/wiki/File:1973_Triumph_TR6_Red.jpg",
   },
   {
     id: "5",
@@ -63,6 +83,10 @@ export const galleryImages: GalleryImage[] = [
     description: "Surrey top TR4A in Signal Red. IRS makes all the difference.",
     color: "#FF2400",
     emoji: "🔴",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/63/1966_Triumph_TR4A_%2855012%29.jpg",
+    imageCredit: "Calreyn88",
+    imageLicense: "CC BY-SA 4.0",
+    commonsUrl: "https://commons.wikimedia.org/wiki/File:1966_Triumph_TR4A_(55012).jpg",
   },
   {
     id: "6",
@@ -72,6 +96,10 @@ export const galleryImages: GalleryImage[] = [
     description: "A friendly little Spitfire in Royal Blue. Perfect first British car.",
     color: "#002366",
     emoji: "🔵",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/8/81/1969_Triumph_Spitfire.jpg",
+    imageCredit: "Calreyn88",
+    imageLicense: "CC BY-SA 4.0",
+    commonsUrl: "https://commons.wikimedia.org/wiki/File:1969_Triumph_Spitfire.jpg",
   },
   {
     id: "7",
@@ -81,6 +109,10 @@ export const galleryImages: GalleryImage[] = [
     description: "The Big Healey in Healey Blue over Ivory. The sound of that exhaust...",
     color: "#4169E1",
     emoji: "🔵",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/db/1964_Austin-Healey_3000_MK_III.jpg",
+    imageCredit: "Calreyn88",
+    imageLicense: "CC BY-SA 4.0",
+    commonsUrl: "https://commons.wikimedia.org/wiki/File:1964_Austin-Healey_3000_MK_III.jpg",
   },
   {
     id: "8",
@@ -90,6 +122,10 @@ export const galleryImages: GalleryImage[] = [
     description: "The happiest car ever made. You can't look at it without smiling.",
     color: "#FFD700",
     emoji: "🟡",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/8/85/258UYO_1959_Austin_Healey_Sprite.jpg",
+    imageCredit: "kitmasterbloke",
+    imageLicense: "CC BY 4.0",
+    commonsUrl: "https://commons.wikimedia.org/wiki/File:258UYO_1959_Austin_Healey_Sprite.jpg",
   },
   {
     id: "9",
@@ -99,6 +135,10 @@ export const galleryImages: GalleryImage[] = [
     description: "An XK140 in Cream — elegant, powerful, and impossibly beautiful.",
     color: "#FFFDD0",
     emoji: "⚪",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/13/Jaguar_XK140_dutch_licence_registration_AL-72-04_pic1.JPG",
+    imageCredit: "AlfvanBeem",
+    imageLicense: "CC0",
+    commonsUrl: "https://commons.wikimedia.org/wiki/File:Jaguar_XK140_dutch_licence_registration_AL-72-04_pic1.JPG",
   },
   {
     id: "10",
@@ -108,6 +148,10 @@ export const galleryImages: GalleryImage[] = [
     description: "Enzo Ferrari reportedly called it the most beautiful car ever made. Hard to disagree.",
     color: "#8B0000",
     emoji: "🔴",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/30/1961_Jaguar_E-Type_6.jpg",
+    imageCredit: "Calreyn88",
+    imageLicense: "CC BY-SA 4.0",
+    commonsUrl: "https://commons.wikimedia.org/wiki/File:1961_Jaguar_E-Type_6.jpg",
   },
   {
     id: "11",
@@ -117,6 +161,10 @@ export const galleryImages: GalleryImage[] = [
     description: "Chapman's masterpiece. Light, nimble, and utterly thrilling to drive.",
     color: "#FFD700",
     emoji: "🟡",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/46/1966_Lotus_Elan.jpg",
+    imageCredit: "Calreyn88",
+    imageLicense: "CC BY-SA 4.0",
+    commonsUrl: "https://commons.wikimedia.org/wiki/File:1966_Lotus_Elan.jpg",
   },
   {
     id: "12",
@@ -126,5 +174,9 @@ export const galleryImages: GalleryImage[] = [
     description: "A Morgan Plus 4 — because some things are worth waiting 10 years for.",
     color: "#004225",
     emoji: "🟢",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Morgan_Plus4_Drophead_1963.jpg",
+    imageCredit: "Ramgeis",
+    imageLicense: "CC BY-SA 3.0",
+    commonsUrl: "https://commons.wikimedia.org/wiki/File:Morgan_Plus4_Drophead_1963.jpg",
   },
 ];

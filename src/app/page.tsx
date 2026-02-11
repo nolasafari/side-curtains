@@ -61,7 +61,7 @@ export default function Home() {
       <section className="max-w-6xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-brg mb-2">Featured Car of the Month</h2>
-          <p className="text-leather italic">February 2025</p>
+          <p className="text-leather italic">February 2026</p>
         </div>
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-cream-dark">
           <div className="md:flex">

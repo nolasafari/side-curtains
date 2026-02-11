@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { marques, galleryImages } from "@/data/galleryData";
 
 export default function GalleryPage() {
@@ -68,22 +69,52 @@ export default function GalleryPage() {
             key={image.id}
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow group"
           >
-            {/* Image Placeholder */}
-            <div
-              className="h-48 flex items-center justify-center relative overflow-hidden"
-              style={{
-                background: `linear-gradient(135deg, ${image.color}22, ${image.color}44)`,
-              }}
-            >
-              <div className="text-center">
-                <span className="text-6xl block mb-2 group-hover:scale-110 transition-transform duration-300">
-                  {image.emoji}
-                </span>
-                <p className="text-xs text-brg-light font-medium opacity-50">
-                  Photo coming soon
-                </p>
+            {/* Image or Emoji Placeholder */}
+            {image.imageUrl ? (
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={image.imageUrl}
+                  alt={`${image.year || ""} ${image.model}`}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                {image.imageCredit && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/50 px-2 py-1">
+                    <p className="text-[10px] text-white/80">
+                      {image.commonsUrl ? (
+                        <a
+                          href={image.commonsUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-white"
+                        >
+                          📷 {image.imageCredit} / Wikimedia Commons / {image.imageLicense}
+                        </a>
+                      ) : (
+                        <>📷 {image.imageCredit} / {image.imageLicense}</>
+                      )}
+                    </p>
+                  </div>
+                )}
               </div>
-            </div>
+            ) : (
+              <div
+                className="h-48 flex items-center justify-center relative overflow-hidden"
+                style={{
+                  background: `linear-gradient(135deg, ${image.color}22, ${image.color}44)`,
+                }}
+              >
+                <div className="text-center">
+                  <span className="text-6xl block mb-2 group-hover:scale-110 transition-transform duration-300">
+                    {image.emoji}
+                  </span>
+                  <p className="text-xs text-brg-light font-medium opacity-50">
+                    Photo coming soon
+                  </p>
+                </div>
+              </div>
+            )}
             {/* Card Content */}
             <div className="p-4">
               <div className="flex items-center justify-between mb-1">
